@@ -1,0 +1,26 @@
+while (waitrecving() == 0);
+while (waitsending() == 0);
+while (waitboth() == 0);
+RECVING = 1;
+SENDING = 1;
+RECVING = 0;
+SENDING = 0;
+
+
+
+string -> int 转换：
+std::stoi：简单、高效。
+int=stoi(string)
+std::istringstream：更灵活，支持多种类型解析。
+
+int -> string 转换：
+推荐使用 std::to_string：简洁直接。
+string=tp_string(int)
+使用 std::ostringstream：更通用，适合复杂格式化操作。
+
+
+设置套接字等待时长（毫秒
+setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&notimeout, sizeof(notimeout));
+
+暂停时间（秒
+this_thread::sleep_for(chrono::seconds(1));
