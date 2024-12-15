@@ -1,12 +1,10 @@
-while (waitrecving() == 0);
-while (waitsending() == 0);
-while (waitboth() == 0);
-RECVING = 1;
-SENDING = 1;
-RECVING = 0;
-SENDING = 0;
-
-
+message_lyh::waitrecving();
+message_lyh::waitsending();
+message_lyh::waitboth();
+message_lyh::recv1();
+message_lyh::send1();
+message_lyh::recv0();
+message_lyh::send0();
 
 string -> int 转换：
 std::stoi：简单、高效。

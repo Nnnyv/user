@@ -28,7 +28,9 @@ public:
 };
 class qq_lyh :public user_lyh {
 public:
-	qq_lyh() :user_lyh() {}
+	qq_lyh() :user_lyh() {
+		way = 1;
+	}
 	~qq_lyh() {}
 protected:
 	
@@ -36,12 +38,17 @@ protected:
 };
 class webo_lyh :public user_lyh {
 public:
+	webo_lyh() :user_lyh() {
+		way = 2;
+	}
 protected:
 
 };
 class wechat_lyh :public user_lyh {
 public:
-	wechat_lyh() :user_lyh() {}
+	wechat_lyh() :user_lyh() {
+		way = 3;
+	}
 	~wechat_lyh() {}
 protected:
 

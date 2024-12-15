@@ -1,17 +1,16 @@
 #pragma once
-#include"include.h"
+#include"main.h"
 using namespace std;
-
-int start() {
+SOCKET getlink() {
 	char addr[10];
 	WSADATA wsadata;
 	WSAStartup(MAKEWORD(2, 2), &wsadata);
-	client_socket = socket(AF_INET, SOCK_STREAM, 0);
+	SOCKET client_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (client_socket == -1) {
 		cout << "´´½¨socketÊ§°Ü  " << GetLastError() << endl;
 		return -1;
 	}
-	sockaddr_in target ;
+	sockaddr_in target;
 	target.sin_family = AF_INET;
 	target.sin_port = htons(8080);
 	while (1) {
@@ -48,8 +47,13 @@ int start() {
 	//}
 	int timecontrol = 20000;
 	setsockopt(client_socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timecontrol, sizeof(timecontrol));
-	login();
-	reciver_lyh reciver;
-	reciver.set(client_socket, DATA);
+}
+int start() {
+	user_lyh* use;
+	data_lyh* DATA;
+	SOCKET socket = getlink();
+	use=login(socket,DATA);
+	reciver_lyh reciver(socket);
+	reciver.set(socket, DATA);
 	reciver.start();
 }
